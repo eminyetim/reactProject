@@ -1,15 +1,25 @@
-import React from 'react';
-import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { useFuelViewModel } from '../ViewModels/useFuelViewModel';
+import styles from '../styles/fuel_styles';
+import CitySelector from '../components/CitySelector';
+import DistrictSelector from '../components/DistrictSelector';
 
 export default function FuelScreen() {
-  const { fuelList, loading } = useFuelViewModel();
+  const [city, setCity] = useState('istanbul');
+  const [district, setDistrict] = useState('kadikoy');
+
+  const { fuelList, loading } = useFuelViewModel(city, district);
 
   if (loading) return <ActivityIndicator size="large" color="#007AFF" />;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Kadıköy Akaryakıt Fiyatları</Text>
+      <Text style={styles.title}>{district} Akaryakıt Fiyatları</Text>
+
+      <CitySelector selectedCity={city} onSelectCity={setCity} />
+      <DistrictSelector city={city} selectedDistrict={district} onSelectDistrict={setDistrict} />
+
       <FlatList
         data={fuelList}
         keyExtractor={(item, index) => index.toString()}
@@ -24,16 +34,3 @@ export default function FuelScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, backgroundColor: '#fff' },
-  title: { fontSize: 22, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' },
-  card: {
-    padding: 16,
-    marginBottom: 10,
-    backgroundColor: '#f2f2f2',
-    borderRadius: 8,
-    elevation: 2, // Android gölge
-  },
-  brand: { fontSize: 18, fontWeight: '600', marginBottom: 4 },
-});

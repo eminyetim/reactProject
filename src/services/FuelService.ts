@@ -1,6 +1,6 @@
-export async function getFuelPrices() {
+export async function getFuelPrices(city: string, district: string) {
   const response = await fetch(
-    'https://api.collectapi.com/gasPrice/turkeyGasoline?district=kadikoy&city=istanbul',
+    `https://api.collectapi.com/gasPrice/turkeyGasoline?district=${district}&city=${city}`,
     {
       method: 'GET',
       headers: {
@@ -15,5 +15,5 @@ export async function getFuelPrices() {
   }
 
   const data = await response.json();
-  return data.result; // API'den gelen benzin, dizel vs.
+  return data.result;
 }
