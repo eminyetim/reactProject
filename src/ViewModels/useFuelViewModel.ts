@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getFuelPrices } from '../services/FuelService';
 import { FuelItem } from '../models/FuelItem';
 
+
 export function useFuelViewModel(city: string, district: string) {
   const [fuelList, setFuelList] = useState<FuelItem[]>([]);
   const [loading, setLoading] = useState(true);

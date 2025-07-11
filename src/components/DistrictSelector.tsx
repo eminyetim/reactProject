@@ -1,26 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-
-
+import styles from '../styles/DistrictSelectorStyles';
+import strings from '../constants/strings';
 type Props = {
+  districts: string[];
   selectedDistrict: string;
   onSelectDistrict: (district: string) => void;
-  city: string;
 };
 
-const districtMap: { [key: string]: string[] } = {
-  istanbul: ['kadikoy', 'besiktas', 'uskudar', 'tuzla'],
-  ankara: ['cankaya', 'kecioren'],
-  izmir: ['konak', 'bornova'],
-};
-
-export default function DistrictSelector({ selectedDistrict, onSelectDistrict, city }: Props) {
-  const districts = districtMap[city] || [];
-
+export default function DistrictSelector({ districts, selectedDistrict, onSelectDistrict }: Props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>İlçe Seç</Text>
+      <Text style={styles.label}>{strings.districtSelector.label}</Text>
       <Picker
         selectedValue={selectedDistrict}
         onValueChange={(value) => onSelectDistrict(value)}
@@ -33,9 +25,3 @@ export default function DistrictSelector({ selectedDistrict, onSelectDistrict, c
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { marginBottom: 16 },
-  label: { fontSize: 16, fontWeight: 'bold' },
-  picker: { height: 50, width: '100%' },
-});

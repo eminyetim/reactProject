@@ -1,18 +1,21 @@
+// src/components/CitySelector.tsx
+
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import styles from '../styles/CitySelectorStyles';
+import strings from '../constants/strings';
 
 type Props = {
+  cities: string[];
   selectedCity: string;
   onSelectCity: (city: string) => void;
 };
 
-const cities = ['istanbul', 'ankara', 'izmir'];
-
-export default function CitySelector({ selectedCity, onSelectCity }: Props) {
+export default function CitySelector({ cities, selectedCity, onSelectCity }: Props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Şehir Seç</Text>
+      <Text style={styles.label}>{strings.citySelector.label}</Text>
       
       <Picker
         selectedValue={selectedCity}
@@ -26,9 +29,3 @@ export default function CitySelector({ selectedCity, onSelectCity }: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { marginBottom: 16 },
-  label: { fontSize: 16, fontWeight: 'bold' },
-  picker: { height: 50, width: '100%' },
-});
