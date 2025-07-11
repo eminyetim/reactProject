@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFuelPrices } from '../services/FuelService';
-import { FuelItem } from '../Models/FuelItem';
+import { FuelItem } from '../models/FuelItem';
 
 export function useFuelViewModel(city: string, district: string) {
   const [fuelList, setFuelList] = useState<FuelItem[]>([]);

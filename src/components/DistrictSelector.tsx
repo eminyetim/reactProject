@@ -10,7 +10,7 @@ type Props = {
 };
 
 const districtMap: { [key: string]: string[] } = {
-  istanbul: ['kadikoy', 'besiktas', 'uskudar'],
+  istanbul: ['kadikoy', 'besiktas', 'uskudar', 'tuzla'],
   ankara: ['cankaya', 'kecioren'],
   izmir: ['konak', 'bornova'],
 };

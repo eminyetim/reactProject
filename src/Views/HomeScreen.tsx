@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import  styles from '../styles/Home_styles';
+import  styles from '../styles/HomeStyles';
+
 type Props = {
   navigation: NativeStackNavigationProp<any>;
 };

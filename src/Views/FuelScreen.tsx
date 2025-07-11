@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
-import { useFuelViewModel } from '../ViewModels/useFuelViewModel';
-import styles from '../styles/fuel_styles';
+import { useFuelViewModel } from '../viewModels/UseFuelViewModel';
+import styles from '../styles/FuelStyles';
 import CitySelector from '../components/CitySelector';
 import DistrictSelector from '../components/DistrictSelector';
 
